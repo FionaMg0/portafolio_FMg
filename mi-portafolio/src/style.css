@@ -1,2 +1,142 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+
+:root {
+  --color-jacarta: #3a345b;
+  --color-queen-pink: #f3c8dd;
+  --color-middle-purple: #d183a9;
+  --color-old-lavender: #71557a;
+  --color-brown-chocolate: #4b1535;
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+html.dark {
+  --color-jacarta: #f3c8dd; /* Text becomes pinkish */
+  --color-queen-pink: #3a345b; /* Background becomes Jacarta */
+  --color-middle-purple: #d183a9;
+  --color-old-lavender: #f3c8dd;
+  --color-brown-chocolate: #4b1535;
+  --glass-bg: rgba(75, 21, 53, 0.4); /* Brown Chocolate glass */
+  --glass-border: rgba(243, 200, 221, 0.2);
+  --card-bg: rgba(75, 21, 53, 0.6); /* Darker cards for dark mode */
+  --card-border: rgba(243, 200, 221, 0.3);
+  --card-hover-bg: rgba(75, 21, 53, 0.8);
+  background-color: #3a345b; /* Jacarta as background */
+}
+
+:root {
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(255, 255, 255, 0.7);
+  --card-hover-bg: rgba(255, 255, 255, 0.8);
+}
+
+@theme {
+  --color-jacarta: var(--color-jacarta);
+  --color-queen-pink: var(--color-queen-pink);
+  --color-middle-purple: var(--color-middle-purple);
+  --color-old-lavender: var(--color-old-lavender);
+  --color-brown-chocolate: var(--color-brown-chocolate);
+}
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: #f3c8dd;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  width: 100%;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-middle-purple);
+  box-shadow: 0 10px 25px -5px rgba(209, 131, 169, 0.3);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(15px, 25px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.key-particle {
+  position: absolute;
+  pointer-events: none;
+  font-family: monospace;
+  color: #3a345b;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 0;
+  animation: fall linear infinite;
+}
