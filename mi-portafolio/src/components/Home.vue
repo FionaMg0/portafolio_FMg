@@ -87,41 +87,41 @@ onMounted(() => {
     <main class="glass w-full max-w-6xl rounded-[40px] shadow-2xl relative overflow-hidden flex flex-col md:flex-row min-h-[80vh]">
       
       <!-- Top Navigation Bar -->
-      <nav class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-50">
+      <nav class="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center z-50">
         <div class="flex items-center space-x-2"></div>
         
-        <div class="hidden md:flex space-x-8">
+        <div class="flex space-x-4 md:space-x-8 overflow-x-auto no-scrollbar px-2 py-1 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 md:bg-transparent md:backdrop-blur-none md:border-none md:overflow-visible">
           <a v-for="item in navigation" :key="item.name" :href="item.href" 
              @click.prevent="$emit('navigate', item.name)"
-             class="text-old-lavender hover:text-jacarta font-medium transition-colors cursor-pointer">
+             class="text-[10px] md:text-base text-old-lavender hover:text-jacarta font-black uppercase tracking-widest md:font-medium md:capitalize md:tracking-normal transition-colors cursor-pointer whitespace-nowrap">
             {{ item.name }}
           </a>
         </div>
 
         <div class="flex items-center space-x-4">
-          <button @click="toggleDark" class="w-10 h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/50 transition-all">
+          <button @click="toggleDark" class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/50 transition-all text-xs md:text-base">
             {{ isDark ? '☀️' : '🌙' }}
           </button>
         </div>
       </nav>
 
       <!-- Content Grid -->
-      <div class="flex-1 p-8 md:p-16 pt-32 md:pt-32 flex flex-col justify-center relative z-20">
+      <div class="flex-1 p-6 md:p-16 pt-24 md:pt-32 flex flex-col justify-center relative z-20">
         <div class="max-w-3xl">
-          <h1 class="text-6xl md:text-8xl font-serif italic text-jacarta mb-8 leading-[0.9]">
-            Hola, soy <span class="text-middle-purple not-italic font-black">Fiona</span><br/>
+          <h1 class="text-4xl sm:text-6xl md:text-8xl font-serif italic text-jacarta mb-6 md:mb-8 leading-[0.9]">
+            Hola, soy <span class="text-middle-purple not-italic font-black">Fiona</span>.<br/>
           </h1>
-          <p class="text-old-lavender text-xl mb-10 max-w-lg leading-relaxed">
+          <p class="text-old-lavender text-sm md:text-xl mb-8 md:mb-10 max-w-lg leading-relaxed">
             Especializada en el desarrollo de aplicaciones multiplataforma con un enfoque en el diseño estético y funcional.
           </p>
 
           <!-- Action Boxes -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div v-for="service in services" :key="service.title" 
-                 class="glass-card p-6 rounded-3xl flex flex-col">
-              <span class="text-3xl mb-3">{{ service.icon }}</span>
-              <h3 class="text-jacarta font-bold text-lg mb-1">{{ service.title }}</h3>
-              <p class="text-old-lavender text-sm opacity-80">{{ service.desc }}</p>
+                 class="glass-card p-4 md:p-6 rounded-[24px] md:rounded-3xl flex flex-col">
+              <span class="text-2xl md:text-3xl mb-2 md:mb-3">{{ service.icon }}</span>
+              <h3 class="text-jacarta font-bold text-base md:text-lg mb-1">{{ service.title }}</h3>
+              <p class="text-old-lavender text-[12px] md:text-sm opacity-80 leading-snug">{{ service.desc }}</p>
             </div>
           </div>
         </div>

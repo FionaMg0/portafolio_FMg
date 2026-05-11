@@ -92,14 +92,14 @@ const selectProject = (index) => {
     <main class="glass w-full max-w-6xl rounded-[40px] shadow-2xl relative overflow-hidden flex flex-col min-h-[85vh]">
       
       <!-- Top Navigation Bar -->
-      <nav class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-50">
+      <nav class="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center z-50">
         <div class="flex items-center space-x-2"></div>
         
-        <div class="hidden md:flex space-x-8">
+        <div class="flex space-x-4 md:space-x-8 overflow-x-auto no-scrollbar px-2 py-1 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 md:bg-transparent md:backdrop-blur-none md:border-none md:overflow-visible">
           <a v-for="item in navigation" :key="item.name" :href="item.href" 
              @click.prevent="$emit('navigate', item.name)"
              :class="[
-               'text-old-lavender hover:text-jacarta font-medium transition-colors cursor-pointer',
+               'text-[10px] md:text-base text-old-lavender hover:text-jacarta font-black uppercase tracking-widest md:font-medium md:capitalize md:tracking-normal transition-colors cursor-pointer whitespace-nowrap',
                item.name === 'Proyectos' ? 'text-jacarta font-bold border-b-2 border-middle-purple' : ''
              ]">
             {{ item.name }}
@@ -107,94 +107,92 @@ const selectProject = (index) => {
         </div>
 
         <div class="flex items-center space-x-4">
-          <button @click="toggleDark" class="w-10 h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/50 transition-all">
+          <button @click="toggleDark" class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/50 transition-all text-xs md:text-base">
             {{ isDark ? '☀️' : '🌙' }}
           </button>
         </div>
       </nav>
 
       <!-- Projects Content Slider -->
-      <div class="flex-1 flex flex-col lg:flex-row pt-24 pb-12 px-6 md:px-12 gap-8 h-full">
+      <div class="flex-1 flex flex-col lg:flex-row pt-24 pb-12 px-6 md:px-12 gap-8 h-full overflow-y-auto lg:overflow-visible">
         
         <!-- Left: Project Info -->
-        <div class="flex-1 flex flex-col justify-center order-2 lg:order-1">
+        <div class="flex-1 flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
           <transition name="slide-fade" mode="out-in">
-            <div :key="currentProject.id" class="space-y-6">
+            <div :key="currentProject.id" class="space-y-4 md:space-y-6">
               <div>
-                <span class="text-middle-purple font-bold tracking-widest uppercase text-xs">{{ currentProject.subtitle }}</span>
-                <h2 class="text-5xl md:text-6xl font-black text-jacarta mt-2">{{ currentProject.title }}</h2>
+                <span class="text-middle-purple font-bold tracking-widest uppercase text-[10px] md:text-xs">{{ currentProject.subtitle }}</span>
+                <h2 class="text-3xl sm:text-5xl md:text-6xl font-black text-jacarta mt-1 md:mt-2">{{ currentProject.title }}</h2>
               </div>
               
-              <p class="text-old-lavender text-lg max-w-xl leading-relaxed">
+              <p class="text-old-lavender text-sm md:text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
                 {{ currentProject.description }}
               </p>
 
-              <div class="space-y-4">
-                <h4 class="text-jacarta font-bold text-sm uppercase tracking-tighter">Características Principales</h4>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <li v-for="feature in currentProject.features" :key="feature" class="flex items-center space-x-2 text-sm text-old-lavender/80">
-                    <span class="w-1.5 h-1.5 rounded-full bg-middle-purple"></span>
+              <div class="space-y-3 md:space-y-4">
+                <h4 class="text-jacarta font-bold text-[11px] md:text-sm uppercase tracking-tighter">Características Principales</h4>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+                  <li v-for="feature in currentProject.features" :key="feature" class="flex items-center space-x-2 text-[12px] md:text-sm text-old-lavender/80">
+                    <span class="w-1.5 h-1.5 rounded-full bg-middle-purple shrink-0"></span>
                     <span>{{ feature }}</span>
                   </li>
                 </ul>
               </div>
 
-              <div class="flex flex-wrap gap-2 pt-4">
-                <span v-for="tag in currentProject.tech" :key="tag" 
-                      class="px-4 py-1.5 bg-white/40 backdrop-blur-sm border border-white/50 rounded-full text-xs font-bold text-jacarta">
-                  {{ tag }}
+              <!-- Tech Stack -->
+              <div class="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2 pt-2">
+                <span v-for="t in currentProject.tech" :key="t" 
+                      class="px-2.5 py-1 bg-jacarta/5 rounded-full text-[9px] md:text-xs font-bold text-jacarta border border-jacarta/10">
+                  {{ t }}
                 </span>
               </div>
 
-              <div v-if="currentProject.repo" class="pt-4">
-                <a :href="currentProject.repo" target="_blank" 
-                   class="inline-flex items-center space-x-2 px-6 py-3 bg-jacarta text-white rounded-2xl font-bold hover:bg-middle-purple transition-all shadow-lg hover:shadow-middle-purple/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                  <span>Ver código</span>
+              <!-- CTA Buttons -->
+              <div class="pt-4 md:pt-6 flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4">
+                <a :href="currentProject.repo" target="_blank" class="px-5 py-2 md:px-8 md:py-3 bg-jacarta text-white rounded-xl md:rounded-full font-bold text-[11px] md:text-sm hover:bg-middle-purple transition-all shadow-lg hover:shadow-middle-purple/30 flex items-center gap-2">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                  Ver Código
                 </a>
+                <button @click="$emit('navigate', 'Contacto')" class="px-5 py-2 md:px-8 md:py-3 bg-white/50 text-jacarta rounded-xl md:rounded-full font-bold text-[11px] md:text-sm hover:bg-white transition-all border border-jacarta/10">
+                  Me interesa
+                </button>
               </div>
             </div>
           </transition>
         </div>
 
-        <!-- Right: Project Visual -->
-        <div class="flex-1 flex items-center justify-center order-1 lg:order-2 relative group">
+        <!-- Right: Project Image -->
+        <div class="flex-1 relative order-1 lg:order-2 flex items-center justify-center min-h-[200px] md:min-h-0">
           <transition name="zoom-fade" mode="out-in">
-            <div :key="currentProject.id" class="relative w-full max-w-2xl transition-all duration-700">
-               <img :src="currentProject.image" :alt="currentProject.title" class="w-full h-auto max-h-[50vh] object-contain rounded-2xl drop-shadow-2xl group-hover:scale-105 transition-transform duration-700" />
+            <div :key="currentProject.id" class="relative w-full max-w-lg transition-all duration-700">
+               <img :src="currentProject.image" :alt="currentProject.title" class="w-full h-auto max-h-[40vh] md:max-h-[50vh] object-contain drop-shadow-2xl animate-float-slow" />
             </div>
           </transition>
-          
-          <!-- Decorative background element for the image -->
-          <div class="absolute -z-10 w-[100%] h-[100%] bg-middle-purple/10 rounded-full blur-3xl"></div>
         </div>
+
       </div>
 
-      <!-- Bottom Navigation / Project Selector -->
-      <div class="p-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-6 bg-white/5">
+      <!-- Navigation Footer -->
+      <div class="p-6 md:p-8 border-t border-jacarta/5 flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-6 bg-white/5">
         
-        <!-- Project Indicators / Dots -->
-        <div class="flex items-center space-x-3">
+        <!-- Project Indicators -->
+        <div class="flex items-center space-x-2 md:space-x-3 order-2 sm:order-1">
           <button v-for="(p, index) in projects" :key="p.id" 
-                  @click="selectProject(index)"
+                  @click="activeProjectIndex = index"
                   class="group relative flex flex-col items-start transition-all duration-300"
                   :class="activeProjectIndex === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'">
-            <div class="h-2.5 rounded-full bg-jacarta transition-all duration-500 shadow-inner"
-                 :class="activeProjectIndex === index ? 'w-20' : 'w-8'"></div>
-            <span class="text-[9px] font-black text-jacarta uppercase tracking-widest mt-2 hidden md:block"
-                  :class="activeProjectIndex === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 transition-all'">
-              {{ p.title }}
-            </span>
+            <div class="h-1.5 md:h-2.5 rounded-full bg-jacarta transition-all duration-500"
+                 :class="activeProjectIndex === index ? 'w-12 md:w-20' : 'w-4 md:w-8'"></div>
           </button>
         </div>
 
         <!-- Navigation Buttons -->
-        <div class="flex items-center space-x-3">
-          <button @click="prevProject" class="p-2.5 rounded-xl glass-card hover:bg-middle-purple hover:text-white transition-all text-jacarta shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <div class="flex items-center space-x-3 order-1 sm:order-2">
+          <button @click="prevProject" class="w-10 h-10 md:w-12 md:h-12 rounded-xl border border-jacarta/10 flex items-center justify-center hover:bg-jacarta hover:text-white transition-all group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
           </button>
-          <button @click="nextProject" class="p-2.5 rounded-xl glass-card hover:bg-middle-purple hover:text-white transition-all text-jacarta shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <button @click="nextProject" class="w-10 h-10 md:w-12 md:h-12 rounded-xl border border-jacarta/10 flex items-center justify-center hover:bg-jacarta hover:text-white transition-all group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
           </button>
         </div>
 

@@ -35,107 +35,98 @@ const navigation = [
 
     <!-- Main Container (Matching Home Style) -->
     <main class="glass w-full max-w-6xl rounded-[40px] shadow-2xl relative overflow-hidden flex flex-col min-h-[80vh]">
-
-      <!-- Top Navigation Bar (Matching Home Style) -->
-      <nav class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-10">
+      <!-- Top Navigation Bar -->
+      <nav class="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center z-50">
         <div class="flex items-center space-x-2"></div>
-
-        <div class="hidden md:flex space-x-8">
-          <a v-for="item in navigation" :key="item.name" :href="item.href" @click.prevent="$emit('navigate', item.name)"
-            class="text-old-lavender hover:text-jacarta font-medium transition-colors cursor-pointer">
+        
+        <div class="flex space-x-4 md:space-x-8 overflow-x-auto no-scrollbar px-2 py-1 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 md:bg-transparent md:backdrop-blur-none md:border-none md:overflow-visible">
+          <a v-for="item in navigation" :key="item.name" :href="item.href" 
+             @click.prevent="$emit('navigate', item.name)"
+             class="text-[10px] md:text-base text-old-lavender hover:text-jacarta font-black uppercase tracking-widest md:font-medium md:capitalize md:tracking-normal transition-colors cursor-pointer whitespace-nowrap">
             {{ item.name }}
           </a>
         </div>
 
         <div class="flex items-center space-x-4">
-          <button
-            @click="toggleDark"
-            class="w-10 h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/50 transition-all">
+          <button @click="toggleDark" class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/50 transition-all text-xs md:text-base">
             {{ isDark ? '☀️' : '🌙' }}
           </button>
         </div>
       </nav>
 
       <!-- Content Area -->
-      <div class="flex-1 p-8 md:p-16 pt-32 md:pt-32 flex flex-col gap-10">
+      <div class="flex-1 p-6 md:p-16 pt-24 md:pt-32 flex flex-col gap-8 md:gap-10">
 
         <!-- Bio Section -->
-        <div class="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
 
           <!-- Text Content -->
           <div class="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <div class="inline-block relative mb-6">
-              <span class="relative z-10 text-4xl md:text-5xl font-black text-jacarta uppercase tracking-tighter">Quién
-                soy</span>
-              <div class="absolute bottom-1 left-0 w-full h-4 bg-queen-pink -z-10 rotate-1"></div>
+            <div class="inline-block relative mb-4 md:mb-6">
+              <span class="relative z-10 text-4xl md:text-5xl font-black text-jacarta uppercase tracking-tighter">Quién soy</span>
+              <div class="absolute bottom-1 left-0 w-full h-3 md:h-4 bg-queen-pink -z-10 rotate-1"></div>
             </div>
 
             <div class="max-w-2xl">
-         
-                <p class="text-old-lavender text-lg leading-relaxed font-medium">
+                <p class="text-old-lavender text-sm md:text-lg leading-relaxed font-medium">
                   Desarrolladora multiplataforma apasionada por el <span class="text-jacarta font-black italic">Frontend</span> y el buen diseño. Disfruto creando interfaces visuales increíbles, pero siempre con un motor fuerte detrás, por eso complemento la parte visual con un Backend sólido.
                   <br><br>
                   Recién graduada en el Ciclo Superior de <span class="text-middle-purple font-black">DAM</span>. Mi objetivo es seguir especializándome en interfaces interactivas, accesibles y con un diseño impecable.
                 </p>
-              
             </div>
           </div>
         </div>
 
         <!-- Skills Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 
           <!-- Languages -->
-          <div
-            class="glass-card p-6 rounded-[32px] group">
-            <div class="flex items-center gap-3 mb-4">
-              <h3 class="font-black text-jacarta text-xs uppercase tracking-widest">Lenguajes</h3>
+          <div class="glass-card p-4 md:p-6 rounded-[24px] md:rounded-[32px] group">
+            <div class="flex items-center gap-3 mb-3 md:mb-4">
+              <h3 class="font-black text-jacarta text-[10px] md:text-xs uppercase tracking-widest">Lenguajes</h3>
             </div>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-1.5 md:gap-2">
               <span v-for="s in languages" :key="s"
-                class="text-[10px] font-bold px-3 py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
+                class="text-[9px] md:text-[10px] font-bold px-2.5 md:px-3 py-1 md:py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
                 {{ s }}
               </span>
             </div>
           </div>
 
           <!-- Frameworks -->
-          <div
-            class="glass-card p-6 rounded-[32px] group">
-            <div class="flex items-center gap-3 mb-4">
-              <h3 class="font-black text-jacarta text-xs uppercase tracking-widest">Frameworks</h3>
+          <div class="glass-card p-4 md:p-6 rounded-[24px] md:rounded-[32px] group">
+            <div class="flex items-center gap-3 mb-3 md:mb-4">
+              <h3 class="font-black text-jacarta text-[10px] md:text-xs uppercase tracking-widest">Frameworks</h3>
             </div>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-1.5 md:gap-2">
               <span v-for="s in frameworks" :key="s"
-                class="text-[10px] font-bold px-3 py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
+                class="text-[9px] md:text-[10px] font-bold px-2.5 md:px-3 py-1 md:py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
                 {{ s }}
               </span>
             </div>
           </div>
 
           <!-- Tools -->
-          <div
-            class="glass-card p-6 rounded-[32px] group">
-            <div class="flex items-center gap-3 mb-4">
-              <h3 class="font-black text-jacarta text-xs uppercase tracking-widest">Herramientas</h3>
+          <div class="glass-card p-4 md:p-6 rounded-[24px] md:rounded-[32px] group">
+            <div class="flex items-center gap-3 mb-3 md:mb-4">
+              <h3 class="font-black text-jacarta text-[10px] md:text-xs uppercase tracking-widest">Herramientas</h3>
             </div>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-1.5 md:gap-2">
               <span v-for="s in tools" :key="s"
-                class="text-[10px] font-bold px-3 py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
+                class="text-[9px] md:text-[10px] font-bold px-2.5 md:px-3 py-1 md:py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
                 {{ s }}
               </span>
             </div>
           </div>
 
           <!-- Databases -->
-          <div
-            class="glass-card p-6 rounded-[32px] group">
-            <div class="flex items-center gap-3 mb-4">
-              <h3 class="font-black text-jacarta text-xs uppercase tracking-widest">Bases Datos</h3>
+          <div class="glass-card p-4 md:p-6 rounded-[24px] md:rounded-[32px] group">
+            <div class="flex items-center gap-3 mb-3 md:mb-4">
+              <h3 class="font-black text-jacarta text-[10px] md:text-xs uppercase tracking-widest">Bases Datos</h3>
             </div>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-1.5 md:gap-2">
               <span v-for="s in databases" :key="s"
-                class="text-[10px] font-bold px-3 py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
+                class="text-[9px] md:text-[10px] font-bold px-2.5 md:px-3 py-1 md:py-1.5 bg-jacarta/10 rounded-full border border-jacarta/20 text-jacarta shadow-sm">
                 {{ s }}
               </span>
             </div>
