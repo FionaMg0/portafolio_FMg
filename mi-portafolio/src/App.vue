@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import Home from './components/Home.vue'
 import AboutMe from './components/AboutMe.vue'
+import Projects from './components/Projects.vue'
+import Contact from './components/Contact.vue'
 
 const currentView = ref('Inicio')
 
@@ -14,6 +16,8 @@ const handleNavigate = (view) => {
   <Transition name="fade" mode="out-in">
     <Home v-if="currentView === 'Inicio'" @navigate="handleNavigate" />
     <AboutMe v-else-if="currentView === 'Quién soy'" @navigate="handleNavigate" />
+    <Projects v-else-if="currentView === 'Proyectos'" @navigate="handleNavigate" />
+    <Contact v-else-if="currentView === 'Contacto'" @navigate="handleNavigate" />
   </Transition>
 </template>
 

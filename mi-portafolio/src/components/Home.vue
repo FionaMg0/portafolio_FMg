@@ -36,10 +36,16 @@ const handleCommand = () => {
       terminalOutput.value.push({ type: 'system', text: 'Fiona: Desarrolladora multiplataforma apasionada por el Frontend y el buen diseño.' })
       break
     case 'projects':
-      terminalOutput.value.push({ type: 'system', text: 'Cargando proyectos... [En desarrollo]' })
+      terminalOutput.value.push({ type: 'system', text: 'Abriendo sección de proyectos...' })
+      setTimeout(() => {
+        emit('navigate', 'Proyectos')
+      }, 500)
       break
     case 'contact':
-      terminalOutput.value.push({ type: 'system', text: 'Email: mondelofiona@egmail.com' })
+      terminalOutput.value.push({ type: 'system', text: 'Redirigiendo a contacto...' })
+      setTimeout(() => {
+        emit('navigate', 'Contacto')
+      }, 500)
       break
     case 'clear':
       terminalOutput.value = []

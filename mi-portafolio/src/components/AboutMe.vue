@@ -71,13 +71,13 @@ const navigation = [
             </div>
 
             <div class="max-w-2xl">
-              <div class="glass-card p-8 rounded-[32px] text-old-lavender text-lg leading-relaxed font-medium">
-                <p>
+         
+                <p class="text-old-lavender text-lg leading-relaxed font-medium">
                   Desarrolladora multiplataforma apasionada por el <span class="text-jacarta font-black italic">Frontend</span> y el buen diseño. Disfruto creando interfaces visuales increíbles, pero siempre con un motor fuerte detrás, por eso complemento la parte visual con un Backend sólido.
                   <br><br>
                   Recién graduada en el Ciclo Superior de <span class="text-middle-purple font-black">DAM</span>. Mi objetivo es seguir especializándome en interfaces interactivas, accesibles y con un diseño impecable.
                 </p>
-              </div>
+              
             </div>
           </div>
         </div>
