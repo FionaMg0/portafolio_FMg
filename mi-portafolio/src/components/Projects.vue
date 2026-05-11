@@ -26,7 +26,7 @@ const projects = [
       'Sistema de Puntuación y Ranking Global'
     ],
     tech: ['Vue.js 3', 'Node.js', 'TensorFlow.js', 'WebSockets', 'Tailwind CSS', 'Docker'],
-    image: '/muvv.png',
+    image: 'muvv.png',
     color: '#d183a9',
     repo: 'https://github.com/FionaMg0/muvv-realtime-exercice-web.git'
   },
@@ -42,7 +42,7 @@ const projects = [
       'Digitalización completa del Programa Enginy'
     ],
     tech: ['Vue 3', 'Vuetify 3', 'Express', 'MongoDB Atlas', 'Node.js'],
-    image: '/enginy.png',
+    image: 'enginy.png',
     color: '#3a345b',
     repo: 'https://github.com/FionaMg0/Projecte-ENGINY.git'
   },
@@ -58,7 +58,7 @@ const projects = [
       'Infraestructura con Docker y Nginx'
     ],
     tech: ['Unity', 'Node.js', 'MongoDB', 'Docker', 'WebSockets', 'Express'],
-    image: '/bomberman.png',
+    image: 'bomberman.png',
     color: '#71557a',
     repo: 'https://github.com/FionaMg0/Bomberman.git'
   }
