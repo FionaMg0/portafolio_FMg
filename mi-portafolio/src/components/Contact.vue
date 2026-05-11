@@ -94,16 +94,7 @@ const copyEmail = () => {
             </a>
           </div>
 
-          <!-- Decorative Line & Signature -->
-          <div class="pt-8 md:pt-12 border-t border-jacarta/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-             <div class="text-[9px] md:text-[10px] font-black text-jacarta/40 uppercase tracking-[0.3em]">
-               Fiona Mondelo © 2026
-             </div>
-             <div class="flex space-x-2">
-                <div class="w-2 h-2 rounded-full bg-middle-purple/40"></div>
-                <div class="w-2 h-2 rounded-full bg-jacarta/20"></div>
-             </div>
-          </div>
+      
         </div>
 
       </div>
