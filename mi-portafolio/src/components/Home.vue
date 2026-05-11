@@ -107,9 +107,9 @@ onMounted(() => {
 
       <!-- Content Grid -->
       <div class="flex-1 p-8 md:p-16 pt-32 md:pt-32 flex flex-col justify-center relative z-20">
-        <div class="max-w-2xl">
-          <h1 class="text-5xl md:text-7xl font-extrabold text-jacarta mb-6 leading-tight">
-            Hola, soy <span class="text-middle-purple">Fiona</span>.<br/>
+        <div class="max-w-3xl">
+          <h1 class="text-6xl md:text-8xl font-serif italic text-jacarta mb-8 leading-[0.9]">
+            Hola, soy <span class="text-middle-purple not-italic font-black">Fiona</span><br/>
           </h1>
           <p class="text-old-lavender text-xl mb-10 max-w-lg leading-relaxed">
             Especializada en el desarrollo de aplicaciones multiplataforma con un enfoque en el diseño estético y funcional.
@@ -212,6 +212,17 @@ onMounted(() => {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: var(--color-middle-purple);
   border-radius: 3px;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
 }
 
 @keyframes pop-in {
