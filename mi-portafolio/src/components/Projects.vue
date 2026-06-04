@@ -16,6 +16,22 @@ const navigation = [
 const projects = [
   {
     id: 1,
+    title: 'NORTH',
+    subtitle: 'Explora Barcelona',
+    description: 'Plataforma interactiva de descubrimiento urbano que gamifica la exploración de Barcelona. Resuelve la falta de conexión histórica y cultural mediante rutas interactivas, coleccionismo de cromos digitales y desafíos en tiempo real validados por Inteligencia Artificial.',
+    features: [
+      'Mapa interactivo con Leaflet y geolocalización en tiempo real',
+      'Validación de imagenes por IA',
+      'Multijugador en tiempo real',
+      'Red social con feed, comentarios, amigos y ranking'
+    ],
+    tech: ['Vue 3', 'Node.js', 'MongoDB', 'Socket.io', 'TensorFlow.js', 'Capacitor', 'Docker'],
+    image: 'north.png',
+    color: '#3d5a80',
+    repo: 'https://github.com/FionaMg0/North.git'
+  },
+  {
+    id: 2,
     title: 'MUVV',
     subtitle: "Aplicación de ejercicio en tiempo real",
     description: "App social y multijugador que desafía a los usuarios a moverse y competir. Utiliza IA para la detección de posturas en tiempo real, permitiendo un entrenamiento interactivo y social.",
@@ -31,7 +47,7 @@ const projects = [
     repo: 'https://github.com/FionaMg0/muvv-realtime-exercice-web.git'
   },
   {
-    id: 2,
+    id: 3,
     title: 'ENGINY',
     subtitle: 'Consorcio de Educación de Barcelona',
     description: 'Aplicación web educativa desarrollada para digitalizar el Programa Enginy. Un recurso orientador e inclusivo que busca garantizar la escolarización y ofrecer herramientas para el descubrimiento vocacional.',
@@ -47,7 +63,7 @@ const projects = [
     repo: 'https://github.com/FionaMg0/Projecte-ENGINY.git'
   },
   {
-    id: 3,
+    id: 4,
     title: 'BOMBERMAN',
     subtitle: 'Juego Multijugador',
     description: 'Proyecto de juego multijugador clásico desarrollado con una arquitectura de microservicios. Incluye sincronización en tiempo real mediante WebSockets y un cliente desarrollado en Unity 2D.',
